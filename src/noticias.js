@@ -1,4 +1,4 @@
-export const noticias = [
+export let noticias = [
     {
         id: 1,
         titulo: "Madrinha aparece no casamento da irmã fantasiada de tiranossauro nos EUA.",
