@@ -9,15 +9,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      noticias: noticias,
+      noticias: noticias
     };
+    this.submitForm = this.submitForm.bind(this);
   }
  
 //   componentDidMount() {}
-  // getFormData(e) {
-  //   e.preventDefault();
-  //   console.log(e);
-  // }
+
+  submitForm = (e) => {
+    alert('Um nome foi enviado: ' + this.state.value);
+    e.preventDefault();
+}
 
   setNewNoticia(newNoticia) {
     this.setState({ noticias: [...this.state.noticias, newNoticia] });
@@ -26,8 +28,8 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Header />
-        <div className="container">
+{/*         <Header /> */}
+        <div className="container-fluid">
           <AddNovaNoticia setNewNoticia={this.setNewNoticia.bind(this)} />
           <News noticias={this.state.noticias} />
         </div>

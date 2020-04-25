@@ -19,7 +19,7 @@ const populaTabela = (noticias) => {
 
 const News = ({ noticias }) => {
   return (
-    <section className="container">
+    <section>
       <table id="noticias" className="table table-striped table-borderless">
         <thead>
           <th>Título</th>
