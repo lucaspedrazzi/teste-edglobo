@@ -19,11 +19,16 @@ class App extends Component {
   submitForm = (e) => {
     alert('Um nome foi enviado: ' + this.state.value);
     e.preventDefault();
+    console.log(this.state.value);
 }
 
   setNewNoticia(newNoticia) {
     this.setState({ noticias: [...this.state.noticias, newNoticia] });
   }
+
+  deleteNoticia = () => {
+    console.log("Clicado");
+  }
 
   render() {
     return (
@@ -31,7 +36,7 @@ class App extends Component {
 {/*         <Header /> */}
         <div className="container-fluid">
           <AddNovaNoticia setNewNoticia={this.setNewNoticia.bind(this)} />
-          <News noticias={this.state.noticias} />
+          <News noticias={this.state.noticias} onDelete={this.deleteNoticia}/>
         </div>
       </Fragment>
     );

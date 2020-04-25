@@ -19,7 +19,7 @@ const AddNovaNoticia = (submitForm) => {
             <textarea className="form-control" id="conteudoMateria" placeholder="Digite o conteúdo da matéria aqui." required></textarea>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit" onClick="{this.setNewNoticia}">Adicionar matéria</button>
+        <button class="btn btn-primary" type="submit" onClick="{this.submitForm}">Adicionar matéria</button>
       </form>
     </section>
   );

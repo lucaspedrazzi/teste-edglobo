@@ -10,7 +10,7 @@ const populaTabela = (noticias) => {
         <td>{noticia.data_publicacao}</td>
         <td>
           <i className='btn-link margin-right-10'>Editar</i>
-          <i className='btn-link'>Deletar</i>
+          <i className='btn-link' onClick={this.props.onDelete}>Deletar</i>
         </td>
       </tr>
     );
