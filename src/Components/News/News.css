@@ -1,3 +1,11 @@
 .margin-right-10 {
   margin-right: 10px;
 }
+
+.btn-link {
+  cursor: pointer;  
+}
+
+.btn-link:hover {
+  text-decoration: none;
+}

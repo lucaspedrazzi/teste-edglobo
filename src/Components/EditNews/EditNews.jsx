@@ -1,47 +1,46 @@
 import React from "react";
-import "./AddNovaNoticia.css";
 
-const AddNovaNoticia = ({ submitForm }) => {
-  return (
-    <section className="form-container">
-      <form onSubmit={submitForm} id="myForm">
+const EditNews = ({editForm}) => {
+  return(
+<section className="form-container">
+      <form id="myForm" onSubmit={editForm}>
         <div className="form-row">
           <div className="col-md-8">
-            <label htmlFor="tituloMateria">Título da Matéria</label>
+            <label htmlFor="novoTituloMateria">Título da Matéria</label>
             <input
               type="text"
               className="form-control"
-              id="tituloMateria"
+              id="novoTituloMateria"
               required
               placeholder="Digite o título da sua matéria aqui"
             />
           </div>
           <div className="col-md-4">
-            <label htmlFor="dataPublicacao">Data de publicação</label>
+            <label htmlFor="novaDataPublicacao">Data de publicação</label>
             <input
               type="date"
               class="form-control"
-              id="dataPublicacao"
+              id="novaDataPublicacao"
               required
               placeholder="dd/mm/yyyy"
             />
           </div>
           <div className="col-md-12 padding-top-15">
-            <label for="conteudoMateria">Conteúdo da matéria</label>
+            <label for="novoConteudoMateria">Conteúdo da matéria</label>
             <textarea
               className="form-control"
-              id="conteudoMateria"
+              id="novoConteudoMateria"
               placeholder="Digite o conteúdo da matéria aqui."
               required
             ></textarea>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit" onClick={submitForm}>
-          Adicionar matéria
+        <button class="btn btn-primary" type="submit" onClick={editForm}>
+          Salvar edição
         </button>
       </form>
-    </section>
+      </section>
   );
-};
+} 
 
-export default AddNovaNoticia;
+export default EditNews;
