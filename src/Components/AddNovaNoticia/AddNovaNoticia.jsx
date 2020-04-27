@@ -4,6 +4,7 @@ import "./AddNovaNoticia.css";
 const AddNovaNoticia = ({ submitForm }) => {
   return (
     <section className="form-container">
+      <h3>Adicionar Notícias</h3>
       <form onSubmit={submitForm} id="myForm">
         <div className="form-row">
           <div className="col-md-8">

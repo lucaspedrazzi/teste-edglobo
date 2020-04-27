@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import './EditNew.css';
 
-const EditNews = ({editForm}) => {
-  return(
-<section className="form-container">
-      <form id="myForm" onSubmit={editForm}>
+const EditNews = ({ submitEditForm, editForm, initialData }) => {
+  const [titulo, setTitulo] = useState(initialData.titulo);
+  const [data, setData] = useState(initialData["data_publicacao"]);
+  const [conteudo, setConteudo] = useState(initialData.conteudo);
+  
+  useEffect(() => {
+    setTitulo(initialData.titulo);
+  }, [initialData]);
+
+  useEffect(() => {
+    setData(initialData["data_publicacao"]);
+  }, [initialData]);
+
+  useEffect(() => {
+    setConteudo(initialData.conteudo);
+  }, [initialData]);
+
+
+  return (
+    <section className="edit-container">
+      <h3>Editar Notícias</h3>
+      <form id="myEditForm" onSubmit={editForm}>
         <div className="form-row">
           <div className="col-md-8">
             <label htmlFor="novoTituloMateria">Título da Matéria</label>
@@ -13,6 +32,8 @@ const EditNews = ({editForm}) => {
               id="novoTituloMateria"
               required
               placeholder="Digite o título da sua matéria aqui"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
             />
           </div>
           <div className="col-md-4">
@@ -23,6 +44,8 @@ const EditNews = ({editForm}) => {
               id="novaDataPublicacao"
               required
               placeholder="dd/mm/yyyy"
+              value={data}
+              onChange={(e) => setData(e.target.value)}
             />
           </div>
           <div className="col-md-12 padding-top-15">
@@ -32,15 +55,17 @@ const EditNews = ({editForm}) => {
               id="novoConteudoMateria"
               placeholder="Digite o conteúdo da matéria aqui."
               required
+              value={conteudo}
+              onChange={(e) => setConteudo(e.target.value)}
             ></textarea>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit" onClick={editForm}>
+        <button class="btn btn-primary" type="submit" onClick={submitEditForm}>
           Salvar edição
         </button>
       </form>
-      </section>
+    </section>
   );
-} 
+};
 
 export default EditNews;

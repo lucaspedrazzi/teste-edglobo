@@ -9,3 +9,9 @@
 .btn-link:hover {
   text-decoration: none;
 }
+
+.table-container {
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px
+}

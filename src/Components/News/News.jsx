@@ -10,7 +10,7 @@ const populaTabela = (noticias, onDelete, editForm) => {
         <td>{noticia.conteudo}</td>
         <td>{noticia.data_publicacao}</td>
         <td>
-          <i id='edit' className="btn-link margin-right-10" onClick={() => editForm}>Editar</i>
+          <i id='edit' className="btn-link margin-right-10" onClick={() => editForm()}>Editar</i>
           <i className="btn-link" onClick={() => onDelete(noticia.id)}>
             Deletar
           </i>
@@ -23,7 +23,7 @@ const populaTabela = (noticias, onDelete, editForm) => {
 
 const News = ({ onDelete, noticias, editForm}) => {
   return (
-    <section>
+    <section className="table-container">
 
       <table id="noticias" className="table table-striped table-borderless">
 

@@ -10,11 +10,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      noticias: noticias
+      noticias: noticias,
+      editingNoticia: {},
     };
     this.submitForm = this.submitForm.bind(this);
   }
-/* Nova Noticia */
+  /* Nova Noticia */
   submitForm = (e) => {
     e.preventDefault();
     const { noticias } = this.state;
@@ -23,37 +24,59 @@ class App extends Component {
 
     newNoticia.titulo = document.getElementById("tituloMateria").value;
     newNoticia.conteudo = document.getElementById("conteudoMateria").value;
-    newNoticia["data_publicacao"] = document.getElementById("dataPublicacao").value;
+    newNoticia["data_publicacao"] = document.getElementById(
+      "dataPublicacao"
+    ).value;
     newNoticia.id = noticias[noticias.length - 1].id + 1;
     this.setNewNoticia(newNoticia);
 
     document.getElementById("myForm").reset();
   };
 
-
   setNewNoticia(newNoticia) {
     this.setState({ noticias: [...this.state.noticias, newNoticia] });
   }
 
-/* Editar */
-editForm = (e) => {
-  e.preventDefault();
-  const { noticias } = this.state;
-  const editedNoticia = {};
+  /* Editar */
+  editForm(id) {
+    const { noticias } = this.state;
+    console.log("edited", id);
 
-  editedNoticia.titulo = document.getElementById("novoTituloMateria").value;
-  editedNoticia.conteudo = document.getElementById("novoConteudoMateria").value;
-  editedNoticia["data_publicacao"] = document.getElementById("novaDataPublicacao").value;
+    const editingNoticia = noticias.filter((noticia) => noticia.id === id)[0];
+    this.setState({ editingNoticia });
+  }
 
-  const noticias = noticias.filter((noticia) => )
-}
+  submitEditForm = (e) => {
+    e.preventDefault();
+    const { noticias, editingNoticia } = this.state;
 
-setEditedNoticia(editedNoticia) {
-  this.setState({ noticias: [...this.state.noticias, editedNoticia]});
-}
+    const newNoticia = {};
 
+    newNoticia.titulo = document.getElementById("novoTituloMateria").value;
+    newNoticia.conteudo = document.getElementById("novoConteudoMateria").value;
+    newNoticia["data_publicacao"] = document.getElementById(
+      "novaDataPublicacao"
+    ).value;
+    newNoticia.id = editingNoticia.id;
 
-/* Deletar */
+    const updatedNoticias = noticias.map((noticia) => {
+      if (noticia.id === newNoticia.id) {
+        return newNoticia;
+      } else {
+        return noticia;
+      }
+    });
+
+    this.setState({ noticias: updatedNoticias });
+
+    document.getElementById("myEditForm").reset();
+  };
+
+  setEditedNoticia(editedNoticia) {
+    this.setState({ noticias: [...this.state.noticias, editedNoticia] });
+  }
+
+  /* Deletar */
   deleteNoticia(id) {
     const { noticias } = this.state;
 
@@ -63,22 +86,26 @@ setEditedNoticia(editedNoticia) {
 
     this.setState({ noticias: delNoticias });
   }
- 
+
   render() {
     return (
       <Fragment>
         <Header />
 
         <div className="container-fluid">
-
           <AddNovaNoticia submitForm={this.submitForm.bind(this)} />
 
           <News
+            editForm={this.editForm.bind(this)}
             noticias={this.state.noticias}
             onDelete={this.deleteNoticia.bind(this)}
           />
-        </div> 
-        <EditNews  editForm={this.editForm.bind(this)}/>
+        </div>
+        <EditNews
+          initialData={this.state.editingNoticia}
+          editForm={this.editForm.bind(this)}
+          submitEditForm={this.submitEditForm.bind(this)}
+        />
       </Fragment>
     );
   }
