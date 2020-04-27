@@ -72,6 +72,10 @@ class App extends Component {
     document.getElementById("myEditForm").reset();
   };
 
+  clearEditForm() {
+    document.getElementById("myForm").reset();
+  }
+
   setEditedNoticia(editedNoticia) {
     this.setState({ noticias: [...this.state.noticias, editedNoticia] });
   }

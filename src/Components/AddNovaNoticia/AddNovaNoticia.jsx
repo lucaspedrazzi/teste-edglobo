@@ -37,9 +37,7 @@ const AddNovaNoticia = ({ submitForm }) => {
             ></textarea>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit" onClick={submitForm}>
-          Adicionar matéria
-        </button>
+        <button class="btn btn-primary" type="submit" onClick={submitForm}>Adicionar matéria</button>
       </form>
     </section>
   );

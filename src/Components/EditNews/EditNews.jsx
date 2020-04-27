@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './EditNew.css';
 
-const EditNews = ({ submitEditForm, editForm, initialData }) => {
+const EditNews = ({ submitEditForm, editForm, initialData, clearEditForm }) => {
   const [titulo, setTitulo] = useState(initialData.titulo);
   const [data, setData] = useState(initialData["data_publicacao"]);
   const [conteudo, setConteudo] = useState(initialData.conteudo);
@@ -60,9 +60,7 @@ const EditNews = ({ submitEditForm, editForm, initialData }) => {
             ></textarea>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit" onClick={submitEditForm}>
-          Salvar edição
-        </button>
+        <button class="btn btn-primary" type="submit" onClick={submitEditForm}>Salvar edição</button>
       </form>
     </section>
   );
